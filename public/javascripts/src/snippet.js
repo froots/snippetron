@@ -1,7 +1,13 @@
 var Snippet = {
+  Model: Backbone.Model.extend(),
+
   Views: {
     Form: Backbone.View.extend({
       tagName: "form",
+
+      events: {
+        "submit": "create"
+      },
 
       render: function() {
         this.el.innerHTML = '<div class="row">' +
@@ -14,6 +20,11 @@ var Snippet = {
           '</div>' +
           '<input type="submit" value="Create snippet">';
         return this;
+      },
+
+      create: function(ev) {
+        ev.preventDefault();
+        this.model = new Snippet.Model();
       }
     })
   }
