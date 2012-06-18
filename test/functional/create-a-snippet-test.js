@@ -16,7 +16,7 @@ casper.start(baseUrl, function() {
 
 casper.test.comment("Then I should see a message");
 casper.waitUntilVisible(".message", function() {
-  this.test.assertTextExists("Snippet 'Alert example' saved");
+  this.test.assertTextExists("Snippet 'Alert example' saved!", "Save text is correct");
 }, function() {
   this.debugHTML();
   this.test.fail("Create snippet message timed out");

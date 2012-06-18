@@ -3,34 +3,44 @@
  * Module dependencies.
  */
 
-var express = require('express');
+var express = require("express");
+
+var SnippetProvider = require("./lib/snippet-provider").SnippetProvider;
 
 var app = module.exports = express.createServer();
 
 // Configuration
 
 app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
+  app.set("views", __dirname + "/views");
+  app.set("view engine", "jade");
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + "/public"));
 });
 
-app.configure('development', function(){
+app.configure("development", function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
-app.configure('production', function(){
+app.configure("production", function(){
   app.use(express.errorHandler()); 
 });
 
+var snippetProvider = new SnippetProvider();
+
 // Routes
 
-app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Snippetron'
+app.get("/", function(req, res){
+  res.render("index", {
+    title: "Snippetron"
+  });
+});
+
+app.post("/", function(req, res) {
+  snippetProvider.save(req, function(error, snippets) {
+    res.send({ "status": "success" });
   });
 });
 

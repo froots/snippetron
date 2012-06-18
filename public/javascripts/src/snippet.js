@@ -6,6 +6,7 @@ var Snippet = {
   Views: {
     Form: Backbone.View.extend({
       tagName: "form",
+      className: "create-snippet",
 
       events: {
         "submit": "create"
