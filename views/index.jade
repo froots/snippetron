@@ -1,10 +1,7 @@
 h1= title
-#app 
-  form.create-snippet
-    .row
-      label(for='title') Snippet title
-      input#title(name='title', type='text')
-    .row
-      label(for='content') Snippet contents
-      textarea#content(rows=10, cols=80, name='content')
-    input(type='submit', value='Create snippet')
+#app
+script(src='/javascripts/lib/jquery.js')
+script(src='/javascripts/lib/underscore.js')
+script(src='/javascripts/lib/backbone.js')
+script(src='/javascripts/src/snippet.js')
+script(src='/javascripts/src/main.js')

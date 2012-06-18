@@ -5,6 +5,7 @@
     "express": "2.5.10"
   },
   "devDependencies": {
-    "supervisor": ">= 0.3.5"
+    "supervisor": ">= 0.3.5",
+    "buster": ">= 0.5.4"
   }
 }

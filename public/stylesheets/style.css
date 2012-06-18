@@ -1,8 +1,35 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  font: 16px Arial;
+  background-color: #fff;
+  color: #444;
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  background: #444;
+  color: #fff;
+  font-weight: normal;
+  font-size: 32px;
+  padding: .2em 2%;
+  margin: 0 0 .5em;
+}
+
+#app {
+  margin: 0 2%;
+  padding: 0;
+}
+
+.row {
+  margin: 1em 0;
+}
+
+label {
+  display: block;
+  margin-bottom: .2em;
+}
+
+input[type=text], textarea {
+  width: 100%;
+  max-width: 400px;
 }
