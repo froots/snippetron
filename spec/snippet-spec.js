@@ -46,14 +46,12 @@ describe("Snippet module", function() {
       });
 
       it("makes the correct POST request to the server", function() {
-        var req = this.server.requests[0];
-        expect(this.server.requests.length).toEqual(1);
-        expect(req).toBeDefined();
-        expect(req.url).toEqual("/");
-        expect(JSON.parse(req.body)).toEqual({
-          "title": "Alert example",
-          "content": "alert('An alert');"
-        });
+        var reqs = this.server.requests;
+        expect(reqs.length).toEqual(1);
+        expect(reqs[0].url).toEqual("/");
+        var body = JSON.parse(reqs[0].requestBody);
+        expect(body.title).toEqual("Alert example");
+        expect(body.content).toEqual("alert('An alert');");
       });
     });
   });

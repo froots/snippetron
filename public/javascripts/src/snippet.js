@@ -1,5 +1,7 @@
 var Snippet = {
-  Model: Backbone.Model.extend(),
+  Model: Backbone.Model.extend({
+    urlRoot: "/"
+  }),
 
   Views: {
     Form: Backbone.View.extend({
@@ -26,7 +28,8 @@ var Snippet = {
         ev.preventDefault();
         this.model = new Snippet.Model();
         this.model.save({
-          "title": this.$el.serialize()
+          "title": this.$("[name='title']").val(),
+          "content": this.$("[name='content']").val()
         });
       }
     })
