@@ -12,7 +12,8 @@ var Snippet = {
       },
 
       render: function() {
-        this.el.innerHTML = '<div class="row">' +
+        this.el.innerHTML = '<div class="message" style="display:none"></div>' +
+          '<div class="row">' +
             '<label for="title">Snippet title</label>' +
             '<input type="text" name="title" id="title">' +
           '</div>' +
@@ -30,7 +31,17 @@ var Snippet = {
         this.model.save({
           "title": this.$("[name='title']").val(),
           "content": this.$("[name='content']").val()
+        }, {
+          "success": _.bind(this.onCreateSuccess, this)
         });
+      },
+
+      onCreateSuccess: function(model, response) {
+        this.showMessage("Snippet '" + model.get('title') + "' saved!");
+      },
+
+      showMessage: function(message) {
+        this.$(".message").text(message).show();
       }
     })
   }
