@@ -31,6 +31,9 @@ describe("Snippet module", function() {
     describe("with a completed form", function() {
       beforeEach(function() {
         this.server = sinon.fakeServer.create();
+        this.server.respondWith("POST", "/",
+          [200, { "Content-Type": "application/json" },
+          JSON.stringify({ "status": "success" })]);
 
         this.formView.$("[name='title']").val("Alert example");
         this.formView.$("[name='content']").val("alert('An alert');");
@@ -52,6 +55,17 @@ describe("Snippet module", function() {
         var body = JSON.parse(reqs[0].requestBody);
         expect(body.title).toEqual("Alert example");
         expect(body.content).toEqual("alert('An alert');");
+      });
+
+      describe("and the server responds", function() {
+        beforeEach(function() {
+          this.server.respond();
+        });
+
+        it("shows a success message", function() {
+          expect(this.formView.$(".message").text())
+            .toEqual("Snippet 'Alert example' saved!");
+        });
       });
     });
   });
