@@ -1,2 +1,10 @@
 h1= title
-p Welcome to #{title}
+#app 
+  form.create-snippet
+    .row
+      label(for='title') Snippet title
+      input#title(name='title', type='text')
+    .row
+      label(for='content') Snippet contents
+      textarea#content(rows=10, cols=80, name='content')
+    input(type='submit', value='Create snippet')
