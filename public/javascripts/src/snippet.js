@@ -25,6 +25,9 @@ var Snippet = {
       create: function(ev) {
         ev.preventDefault();
         this.model = new Snippet.Model();
+        this.model.save({
+          "title": this.$el.serialize()
+        });
       }
     })
   }

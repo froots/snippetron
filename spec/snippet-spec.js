@@ -30,13 +30,30 @@ describe("Snippet module", function() {
 
     describe("with a completed form", function() {
       beforeEach(function() {
+        this.server = sinon.fakeServer.create();
+
         this.formView.$("[name='title']").val("Alert example");
         this.formView.$("[name='content']").val("alert('An alert');");
         this.formView.$el.trigger("submit");
       });
 
+      afterEach(function() {
+        this.server.restore();
+      });
+
       it("creates a Snippet model", function() {
         expect(this.formView.model).toBeDefined();
+      });
+
+      it("makes the correct POST request to the server", function() {
+        var req = this.server.requests[0];
+        expect(this.server.requests.length).toEqual(1);
+        expect(req).toBeDefined();
+        expect(req.url).toEqual("/");
+        expect(JSON.parse(req.body)).toEqual({
+          "title": "Alert example",
+          "content": "alert('An alert');"
+        });
       });
     });
   });
