@@ -5,7 +5,7 @@ Feature: Saving a snippet
 
   Scenario: Successful save
     Given I am on the home page
-    When I enter "My Snippet" in the "title" field
-    And I enter "Snippet content" in the "content" field
+    When I enter "My Snippet" in the "Snippet title" field
+    And I enter "Snippet content" in the "Snippet content" field
     And I click the "Create snippet" button
     Then I should see a message with "Snippet 'My Snippet' saved!"
