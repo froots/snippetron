@@ -6,6 +6,8 @@
   },
   "devDependencies": {
     "supervisor": ">= 0.3.5",
-    "buster": ">= 0.5.4"
+    "buster": ">= 0.5.4",
+    "cucumber": "latest",
+    "zombie": "latest"
   }
 }
