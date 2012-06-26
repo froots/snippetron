@@ -1,3 +1,7 @@
+// An example of a spec where the unit under test is the entire Snippet module
+// This has the feel of an integration test, with more than one object under
+// test. However, it requires less stubbing of external dependencies
+
 buster.spec.expose();
 
 describe("Snippet module", function() {
